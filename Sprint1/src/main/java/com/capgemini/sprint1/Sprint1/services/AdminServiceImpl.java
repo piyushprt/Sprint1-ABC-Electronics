@@ -13,6 +13,7 @@ import com.capgemini.sprint1.Sprint1.entities.Engineer;
 import com.capgemini.sprint1.Sprint1.entities.Product;
 import com.capgemini.sprint1.Sprint1.exceptions.ComplaintNotFoundException;
 import com.capgemini.sprint1.Sprint1.exceptions.EngineerNotFoundException;
+import com.capgemini.sprint1.Sprint1.exceptions.InvalidLoginCredentials;
 import com.capgemini.sprint1.Sprint1.exceptions.ProductNotFoundException;
 import com.capgemini.sprint1.Sprint1.repositories.AdminRepository;
 import com.capgemini.sprint1.Sprint1.repositories.ClientRepository;
@@ -39,8 +40,14 @@ public class AdminServiceImpl implements AdminService {
 	private ProductRepository productRepository;
 	
 	@Override
-	public boolean login(long adminId, String password) {
-		Admin admin = adminRepository.findById(adminId).get();
+	public boolean login(long adminId, String password) throws InvalidLoginCredentials {
+		Optional<Admin> getAdmin = adminRepository.findById(adminId);
+		
+		if(!getAdmin.isPresent()) {
+			throw new InvalidLoginCredentials();
+		}
+		
+		Admin admin = getAdmin.get();
 		String pass = admin.getPassword();
 		if (!pass.equals(password)) {
 			return false;

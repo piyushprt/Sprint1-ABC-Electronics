@@ -10,12 +10,13 @@ import com.capgemini.sprint1.Sprint1.entities.Complaint;
 import com.capgemini.sprint1.Sprint1.entities.Engineer;
 import com.capgemini.sprint1.Sprint1.exceptions.ComplaintNotFoundException;
 import com.capgemini.sprint1.Sprint1.exceptions.EngineerNotFoundException;
+import com.capgemini.sprint1.Sprint1.exceptions.InvalidLoginCredentials;
 import com.capgemini.sprint1.Sprint1.exceptions.ProductNotFoundException;
 
 @Service
 public interface AdminService {
 	//Login
-	boolean login(long adminId, String password);
+	boolean login(long adminId, String password) throws InvalidLoginCredentials;
 	
 	//Admin
 	public void saveAdmin(Admin admin);
