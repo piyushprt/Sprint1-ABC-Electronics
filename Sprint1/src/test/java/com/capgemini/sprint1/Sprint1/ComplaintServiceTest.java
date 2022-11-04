@@ -68,7 +68,7 @@ class ComplaintServiceTest {
 
 	@Test
 	@DisplayName("Getting Engineer by ClientId")
-	public void getEngineerTest() {
+	public void getEngineerTest() throws ComplaintNotFoundException {
 
 		// System.out.println(service.getEngineer(1));
 		service.getEngineer(1);
@@ -76,7 +76,7 @@ class ComplaintServiceTest {
 
 	@Test
 	@DisplayName("Getting Product")
-	public void getProductTest() {
+	public void getProductTest() throws ComplaintNotFoundException {
 
 		// System.out.println(service.getEngineer(1));
 		service.getProduct(21);

@@ -38,15 +38,16 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public List<Product> getProducts() {
 		List<Product> products = productRepository.findAll();
+		System.out.println(products);
 		return products;
 	}
 	
 
 	@Override
 	public List<Product> getAvailableProducts() {
-		List<Product> products = getProducts();
+		List<Product> products = productRepository.findAll();
 		List<Product> availableProducts = products.stream()
-				.filter(x->!x.isOwned())
+				.filter(x->x.isOwned()==false)
 				.collect(Collectors.toList());
 		return availableProducts;
 	}
@@ -56,6 +57,7 @@ public class ProductServiceImpl implements ProductService {
 	public void removeProduct(long modelNumber) throws ProductNotFoundException {
 		if(productRepository.existsById(modelNumber)) {
 			productRepository.deleteById(modelNumber);
+			
 		}else {
 			throw new ProductNotFoundException();
 		}

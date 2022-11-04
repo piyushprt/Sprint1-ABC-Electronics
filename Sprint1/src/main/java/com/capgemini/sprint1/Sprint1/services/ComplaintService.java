@@ -27,7 +27,7 @@ public interface ComplaintService {
 	
 	public List<Complaint> getComplaints(long clientId) throws ClientNotFoundException;
 
-	public Engineer getEngineer(long complaintId);
+	public Engineer getEngineer(long complaintId) throws ComplaintNotFoundException;
 	
-	public Product getProduct(long complaintId);
+	public Product getProduct(long complaintId) throws ComplaintNotFoundException;
 }

@@ -132,21 +132,23 @@ public class ComplaintServiceImpl implements ComplaintService {
 	}
 
 	@Override
-	public Engineer getEngineer(long complaintId) {
+	public Engineer getEngineer(long complaintId) throws ComplaintNotFoundException {
 		if(complaintRepository.existsById(complaintId)) {
 			Engineer engineer = engineerRepository.getEngineerByComplaintId(complaintId);
 			return engineer;
+		} else {
+			throw new ComplaintNotFoundException();
 		}
-		return null;
 	}
 
 	@Override
-	public Product getProduct(long complaintId) {
+	public Product getProduct(long complaintId) throws ComplaintNotFoundException {
 		if(complaintRepository.existsById(complaintId)) {
 			Product product = productRepository.getProductByComplaintId(complaintId);
 			return product;
+		}else {
+			throw new ComplaintNotFoundException();
 		}
-		return null;
 	}
 
 }

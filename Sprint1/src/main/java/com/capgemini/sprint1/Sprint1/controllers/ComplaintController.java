@@ -125,7 +125,7 @@ public class ComplaintController {
 	}
 	
 	@GetMapping("/get/engineer/{complaintId}")
-	public ResponseEntity<Engineer> getEngineerByComplaintId(@PathVariable long complaintId, HttpServletRequest request) throws InvalidLoginCredentials {
+	public ResponseEntity<Engineer> getEngineerByComplaintId(@PathVariable long complaintId, HttpServletRequest request) throws InvalidLoginCredentials, ComplaintNotFoundException {
 		boolean validLogin = checkSession(request);
 
 		if (!validLogin) {
@@ -137,7 +137,7 @@ public class ComplaintController {
 	}
 	
 	@GetMapping("/get/product/{complaintId}")
-	public ResponseEntity<Product> getProductByComplaintId(@PathVariable long complaintId,HttpServletRequest request) throws InvalidLoginCredentials {
+	public ResponseEntity<Product> getProductByComplaintId(@PathVariable long complaintId,HttpServletRequest request) throws InvalidLoginCredentials, ComplaintNotFoundException {
 		boolean validLogin = checkSession(request);
 
 		if (!validLogin) {
