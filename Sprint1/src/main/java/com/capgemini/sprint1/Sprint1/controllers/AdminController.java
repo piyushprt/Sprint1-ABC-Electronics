@@ -84,10 +84,10 @@ public class AdminController {
 
 	@PostMapping("/add")
 	public ResponseEntity<String> saveAdmin(@RequestBody Admin admin, HttpServletRequest request) throws Exception {
-		boolean validLogin = checkSession(request);
-		if (!validLogin) {
-			throw new InvalidLoginCredentials();
-		}
+//		boolean validLogin = checkSession(request);
+//		if (!validLogin) {
+//			throw new InvalidLoginCredentials();
+//		}
 
 		adminService.saveAdmin(admin);
 		return new ResponseEntity<String>("Admin added", HttpStatus.OK);
