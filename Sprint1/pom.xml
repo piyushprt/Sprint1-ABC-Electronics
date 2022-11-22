@@ -30,7 +30,6 @@
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
-		
 
 
 		<dependency>
@@ -65,6 +64,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>Sprint1</finalName>
 	</build>
-
+	
 </project>
